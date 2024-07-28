@@ -13,9 +13,9 @@ public class MovieDTOToMovie implements Mapper<MovieDTO, Movie> {
     public Movie mapFrom(MovieDTO movieDTO) {
         return Movie.builder()
                 .title(movieDTO.getTitle())
-                .voteAverage(movieDTO.getVoteAverage())
+                .voteAverage(Double.parseDouble(movieDTO.getVoteAverage()))
                 .voteCount(movieDTO.getVoteCount())
-                .popularity(movieDTO.getPopularity())
+                .popularity(Double.parseDouble(movieDTO.getPopularity()))
                 .releaseDate(LocalDate.parse(movieDTO.getReleaseDate()))
                 .posterLink(movieDTO.getLinkToImage())
                 .overview(movieDTO.getOverview())

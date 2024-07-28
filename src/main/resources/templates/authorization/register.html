@@ -3,49 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/global.css}">
     <link rel="stylesheet" th:href="@{/css/headerAuth.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
 </head>
 <body>
-
-<div>
-    <header th:replace="~{/authorization/headerAuth :: header}"></header>
-    <h3>Enter your register data: </h3>
-    <form action="/register" enctype="multipart/form-data" method="post" th:object="${registeringUser}">
-        <label>Username:
-            <input  type="text" name="username" th:field="*{username}">
-        </label><br>
-        <label>Fullname:
-            <input  type="text" name="fullname" th:field="*{fullname}">
-        </label><br>
-        <label>Email:
-            <input  type="email" name="email" th:field="*{email}">
-        </label><br>
-        <label>Password:
-            <input  type="password" name="password" th:field="*{password}">
-        </label><br>
-        <label>Repeat your password:
-            <input  type="password" name="repeatedPassword" th:field="*{repeatedPassword}">
-        </label><br>
-        <label>Date of birth:
-            <input  type="date" name="birthdate" th:field="*{birthdate}">
-        </label><br>
-        <label>Avatar (optional):
-            <input  type="file" name="avatar" th:field="*{avatar}">
-        </label><br>
-        <label>Citizenship:
-            <select name="citizenship" th:field="*{citizenship}">
-                <option th:each="citizenship : ${citizenships}"
-                        th:value="${citizenship}"
-                        th:text="${citizenship.getDislpayName()}">
-                </option>
-            </select>
-        </label><br>
-        <div th:if="${errorsFound}" th:style="'color: red'"><strong>Please, check your fields</strong></div>
-        <div th:if="${userExistsError}" th:style="'color: red'"><strong>User already exists</strong></div>
-        <button type="submit">Register</button>
-    </form>
+<header th:replace="~{/authorization/headerAuth :: header}"></header>
+<div class="main-content">
+    <div class="register-container">
+        <h3>Register</h3>
+        <p>Enter your details to create an account:</p>
+        <form action="/register" enctype="multipart/form-data" method="post" th:object="${registeringUser}">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" th:field="*{username}">
+            </div>
+            <div class="input-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" th:field="*{fullname}">
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" th:field="*{email}">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" th:field="*{password}">
+            </div>
+            <div class="input-group">
+                <label for="repeatedPassword">Repeat Password</label>
+                <input type="password" id="repeatedPassword" name="repeatedPassword" th:field="*{repeatedPassword}">
+            </div>
+            <div class="input-group">
+                <label for="birthdate">Date of Birth</label>
+                <input type="date" id="birthdate" name="birthdate" th:field="*{birthdate}">
+            </div>
+            <div class="input-group">
+                <label for="avatar">Avatar (optional)</label>
+                <div class="file-input-container">
+                    <input type="file" id="avatar" name="avatar" class="file-input" th:field="*{avatar}">
+                    <label for="avatar" class="custom-file-label">Choose File</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="citizenship">Citizenship</label>
+                <select id="citizenship" name="citizenship" th:field="*{citizenship}">
+                    <option th:each="citizenship : ${citizenships}"
+                            th:value="${citizenship}"
+                            th:text="${citizenship.getDislpayName()}">
+                    </option>
+                </select>
+            </div>
+            <div th:if="${errorsFound}" class="error-message">Please, check your fields</div>
+            <div th:if="${userExistsError}" class="error-message">User already exists</div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
 </div>
-
 </body>
-
 </html>
+

@@ -39,6 +39,7 @@ public class MovieService {
     private final UserMoviesRepository userMoviesRepository;
     private final Mapper<MovieDTO, Movie> mapperMovieDto;
     private final Mapper<Movie, MovieDTO> mapperMovieToMovieDto;
+    private final Mapper<MovieJson, MovieDTO> mapperMovieJsonToMovieDto;
 
     private MovieResponse movieResponse;
     private int counter = 0;
@@ -49,11 +50,13 @@ public class MovieService {
                 .orElseThrow(MovieNotFoundException::new);
     }
 
-    public MovieJson generateMovie() {
+    public MovieDTO generateMovie() {
 
         while (true) {
             if (movieResponse != null && counter < movieResponse.getResults().size()) {
-                return movieResponse.getResults().get(counter++);
+                MovieDTO movieDTO =  mapperMovieJsonToMovieDto.mapFrom(movieResponse.getResults().get(counter++));
+                System.out.println(movieDTO);
+                return movieDTO;
             }
             counter = 0;
             movieResponse = getRandomInMemoryMovies();
@@ -91,7 +94,7 @@ public class MovieService {
 
     private MovieResponse getRandomInMemoryMovies() {
 
-        int page = ThreadLocalRandom.current().nextInt(1, 400);
+        int page = ThreadLocalRandom.current().nextInt(1, 10);
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()

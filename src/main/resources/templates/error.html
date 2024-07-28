@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Error Page</title>
-    <link rel="stylesheet" th:href="@{/css/headerAuth.css}">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/error.css">
 </head>
 <body>
-<h2>Something went wrong...</h2><br>
-<div th:if="${session.auth_user != null}">
-    <form action="/profile" method="get">
-        <button type="submit">Go to profile</button>
-    </form>
-    <form action="/" method="get">
-        <button type="submit">Go to start page</button>
-    </form>
-</div>
-<div th:if="${session.auth_user == null}">
-    <form action="/login" method="get">
-        <button type="submit">Login</button>
-    </form>
-    <form action="/" method="get">
-        <button type="submit">Go to start page</button>
-    </form>
-</div>
+<header class="header-container">
+    <!-- You can include header content here if necessary -->
+</header>
+
+<main class="error-container">
+    <h1>Something Went Wrong</h1>
+    <p>We apologize for the inconvenience. Please choose an option below to continue.</p>
+
+    <div class="error-actions">
+        <div th:if="${session.auth_user != null}">
+            <form action="/profile" method="get">
+                <button type="submit">Go to Profile</button>
+            </form>
+            <form action="/" method="get">
+                <button type="submit">Go to Start Page</button>
+            </form>
+        </div>
+        <div th:if="${session.auth_user == null}">
+            <form action="/login" method="get">
+                <button type="submit">Login</button>
+            </form>
+            <form action="/" method="get">
+                <button type="submit">Go to Start Page</button>
+            </form>
+        </div>
+    </div>
+</main>
 </body>
 </html>

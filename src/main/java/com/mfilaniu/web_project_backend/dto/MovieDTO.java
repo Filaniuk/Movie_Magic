@@ -13,9 +13,9 @@ public class MovieDTO {
 
     Long movieId;
     String title;
-    double voteAverage;
+    String voteAverage;
     int voteCount;
-    double popularity;
+    String popularity;
     String releaseDate;
     String linkToImage;
     String overview;
