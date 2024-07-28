@@ -54,9 +54,7 @@ public class MovieService {
 
         while (true) {
             if (movieResponse != null && counter < movieResponse.getResults().size()) {
-                MovieDTO movieDTO =  mapperMovieJsonToMovieDto.mapFrom(movieResponse.getResults().get(counter++));
-                System.out.println(movieDTO);
-                return movieDTO;
+                return mapperMovieJsonToMovieDto.mapFrom(movieResponse.getResults().get(counter++));
             }
             counter = 0;
             movieResponse = getRandomInMemoryMovies();

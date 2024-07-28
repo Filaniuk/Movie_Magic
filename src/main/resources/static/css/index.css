@@ -97,13 +97,14 @@ form {
 form button {
     background-color: #2196F3;
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem; /* Increased padding for larger button */
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 1.2rem; /* Increased font size */
 }
 
 form button:hover {
-    background-color: #1976D2;
+    background-color: #1466b4;
 }
