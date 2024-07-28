@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start Page</title>
+
+    <script th:src="@{/js/movieSavedBar.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/movieSavedBar.css}">
+</head>
+
+<body>
+<!--Session header-->
+<header th:replace="~{/authorization/headerAuth :: header}"></header>
+<!--Saved to profile notification-->
+<div th:if="${movieSaved_notf.name() == 'SAVED'}" class="notification-bar">
+    Movie Saved! The movie has been saved to your profile.
+</div>
+<div>
+    <h1>Hello on the best website for excellent movies!</h1>
+</div>
+
+<div th:if="${!findMovie_btn}">
+    <form action="/" method="post">
+        <input type="hidden" th:value="${findMovie_btn}" name="findMovie_btn">
+        <button type="submit">Find Movie</button>
+    </form>
+</div>
+
+<div th:if="${findMovie_btn}">
+    Your found movie: <br>
+    <div th:object="${randomMovieData}">
+        <label>
+            Title: <span th:text="*{title}"></span>
+        </label><br>
+        <label>
+            Avg. vote: <span th:text="*{voteAverage}"></span>
+        </label><br>
+        <label>
+            Popularity: <span th:text="*{popularity}"></span>
+        </label><br>
+        <label>
+            Vote count: <span th:text="*{voteCount}"></span>
+        </label><br>
+        <label>
+            Release date: <span th:text="*{releaseDate}"></span>
+        </label><br>
+        <label>
+            <img th:src="@{'https://image.tmdb.org/t/p/w500' + *{linkToImage}}" alt="Movie Photo" />
+        </label><br>
+        <label>
+            Overview: <span th:text="*{overview}"></span>
+        </label>
+    </div>
+    <form action="/" method="post">
+        <input type="hidden" th:value="${findMovie_btn}" name="findMovie_btn">
+        <button type="submit">Hide Movie</button>
+    </form>
+    <form action="/next" method="post">
+        <input type="hidden" th:value="${nextMovie_btn}" name="findMovie_btn">
+        <button type="submit">Next Movie</button>
+    </form>
+    <form action="/save" method="post" th:if="${!removeSaveButton}" th:object="${randomMovieData}" name="currentMovie">
+        <input type="hidden" th:field="*{title}">
+        <input type="hidden" th:field="*{voteAverage}">
+        <input type="hidden" th:field="*{popularity}">
+        <input type="hidden" th:field="*{voteCount}">
+        <input type="hidden" th:field="*{releaseDate}">
+        <input type="hidden" th:field="*{linkToImage}">
+        <input type="hidden" th:field="*{overview}">
+        <input type="hidden" th:field="*{adult}">
+        <button type="submit">Save to profile</button>
+    </form>
+g
+</div>
+
+
+</body>
+
+</html>

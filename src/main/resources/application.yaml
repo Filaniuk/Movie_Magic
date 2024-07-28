@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: web_project_backend
+#data
+  data:
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/my_web_project_db
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 8081
+
+
+
+jpa:
+  properties:
+    hibernate:
+      show_sql: true
+      format_sql: true
+      hbm2ddl.auto: update

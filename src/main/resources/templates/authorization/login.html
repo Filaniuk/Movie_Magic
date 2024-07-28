@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<header th:replace="~{/authorization/headerStartPage :: header}"></header>
+<div>
+        <h3>Enter your login data:</h3>
+        <form action="/login" method="post" th:object="${loggingUser}">
+            <label>Username:
+                <input type="text" name="username" th:field="*{username}">
+            </label><br>
+            <label>Password:
+                <input type="password" name="password">
+            </label><br>
+            <div th:if="${loggingError}" th:style="'color: red;'">False Credentials</div>
+            <button type="submit">Login</button>
+        </form>
+</div>
+</body>
+</html>

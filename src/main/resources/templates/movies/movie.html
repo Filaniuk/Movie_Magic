@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${found_movie.title}">Movie</title>
+</head>
+<body>
+<header th:replace="~{/authorization/headerAuth :: header}"></header>
+
+<div th:object="${found_movie}">
+    <label>
+        <label>
+            <img th:src="@{'https://image.tmdb.org/t/p/w500' + *{linkToImage}}" alt="Movie Photo" />
+        </label><br>
+        <label>
+            Title: <span th:text="*{title}"></span>
+        </label><br>
+        <label>
+            Avg. vote: <span th:text="*{voteAverage}"></span>
+        </label><br>
+        <label>
+            Release date: <span th:text="*{releaseDate}"></span>
+        </label><br>
+        <label>
+            Overview: <span th:text="*{overview}"></span>
+        </label><br>
+    </label>
+</div>
+<div th:if="${session.auth_user != null && @userService.isMovieInUserProfile(session.auth_user.id, found_movie.movieId)}"></div>
+<form action="/profile/delete" method="post">
+    <input type="hidden" th:value="${session.auth_user.id}" name="userId">
+    <input type="hidden" th:value="${found_movie.movieId}" name="movieId">
+    <button type="submit">Delete from profile</button>
+</form>
+
+</body>
+</html>

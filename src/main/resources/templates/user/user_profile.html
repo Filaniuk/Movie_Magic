@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<header th:replace="~{/authorization/headerStartPage :: header}"></header>
+
+    <p th:if = "${session.auth_user != null}">
+        <h3>Hello, <span th:text="${session.auth_user.username}"/>!</h3>
+    </p>
+
+    <div th:if="${show_my_docs == false}">
+        <form action="/profile/my-docs" th:value="${show_my_docs}" method="post">
+            <input type="hidden" th:value="${show_my_docs}" name="show_my_docs">
+            <button type="submit">Show documents</button>
+        </form>
+    </div>
+    <div th:if="${show_my_docs == true}">
+        <h3>Your movies: </h3>
+       <ul>
+           <li th:each="movie : ${session.auth_user.movies}">
+               <a th:href="@{/movies/{id}(id=${movie.movieId})}" th:text="${movie.title}">Document Name</a>
+           </li>
+        </ul>
+        <form action="/profile/my-docs" method="post">
+            <input type="hidden" th:value="${show_my_docs}" name="show_my_docs">
+            <button type="submit">Hide Documents</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+
+<div>
+    <header th:replace="~{/authorization/headerStartPage :: header}"></header>
+    <h3>Enter your register data: </h3>
+    <form action="/register" enctype="multipart/form-data" method="post" th:object="${registeringUser}">
+        <label>Username:
+            <input  type="text" name="username" th:field="*{username}">
+        </label><br>
+        <label>Fullname:
+            <input  type="text" name="fullname" th:field="*{fullname}">
+        </label><br>
+        <label>Email:
+            <input  type="email" name="email" th:field="*{email}">
+        </label><br>
+        <label>Password:
+            <input  type="password" name="password" th:field="*{password}">
+        </label><br>
+        <label>Repeat your password:
+            <input  type="password" name="repeatedPassword" th:field="*{repeatedPassword}">
+        </label><br>
+        <label>Date of birth:
+            <input  type="date" name="birthdate" th:field="*{birthdate}">
+        </label><br>
+        <label>Avatar (optional):
+            <input  type="file" name="avatar" th:field="*{avatar}">
+        </label><br>
+        <label>Citizenship:
+            <select name="citizenship" th:field="*{citizenship}">
+                <option th:each="citizenship : ${citizenships}"
+                        th:value="${citizenship}"
+                        th:text="${citizenship.getDislpayName()}">
+                </option>
+            </select>
+        </label>
+        <div th:if="${errorsFound}" th:style="'color: red'"><strong>There are some errors</strong></div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+</body>
+
+</html>
