@@ -2,32 +2,56 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User</title>
+    <title>User Profile</title>
+    <link rel="stylesheet" th:href="@{/css/headerAuth.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/user_profile.css}">
 </head>
 <body>
-<header th:replace="~{/authorization/headerStartPage :: header}"></header>
+<header th:replace="~{/authorization/headerAuth :: header}"></header>
 
-    <p th:if = "${session.auth_user != null}">
-        <h3>Hello, <span th:text="${session.auth_user.username}"/>!</h3>
-    </p>
+<div class="profile-container" th:object="${session.auth_user}">
+    <!-- User Info Section -->
+    <div class="user-info">
+        <div th:if="*{avatarPath != null}">
+            <img th:src="@{|/images/*{avatarPath}|}" alt="User Avatar" class="avatar"/>
+        </div>
+        <div class="user-details">
+            <p>Email: <span th:text="*{email}"></span></p>
+            <p>Full Name: <span th:text="*{fullname}"></span></p>
+        </div>
+    </div>
 
-    <div th:if="${show_my_docs == false}">
-        <form action="/profile/my-docs" th:value="${show_my_docs}" method="post">
-            <input type="hidden" th:value="${show_my_docs}" name="show_my_docs">
-            <button type="submit">Show documents</button>
-        </form>
+    <!-- Movies Section -->
+    <div class="movies-section">
+        <div th:if="${show_my_docs == false}">
+            <form action="/profile/my-docs" th:value="${show_my_docs}" method="post">
+                <input type="hidden" th:value="${show_my_docs}" name="show_my_docs">
+                <button type="submit">Show Movies</button>
+            </form>
+        </div>
+
+        <div th:if="${show_my_docs == true}">
+            <h3>Your Movies:</h3>
+            <div th:if="${!session.auth_user.movies.isEmpty()}">
+                <ul>
+                    <li th:each="movie : ${session.auth_user.movies}">
+                        <a th:href="@{/movies/{id}(id=${movie.movieId})}" th:text="${movie.title}"></a>
+                    </li>
+                </ul>
+                <p>If you want to delete a movie, click on it and use the <strong>"Delete Movie"</strong> button.</p>
+            </div>
+            <div th:if="${session.auth_user.movies.isEmpty()}">
+                You don't have any movies. Go to <a th:href="@{/}">start page</a> to add some.
+            </div>
+            <br>
+            <form action="/profile/my-docs" method="post">
+                <input type="hidden" th:value="${show_my_docs}" name="show_my_docs">
+                <button type="submit">Hide Movies</button>
+            </form>
+        </div>
     </div>
-    <div th:if="${show_my_docs == true}">
-        <h3>Your movies: </h3>
-       <ul>
-           <li th:each="movie : ${session.auth_user.movies}">
-               <a th:href="@{/movies/{id}(id=${movie.movieId})}" th:text="${movie.title}">Document Name</a>
-           </li>
-        </ul>
-        <form action="/profile/my-docs" method="post">
-            <input type="hidden" th:value="${show_my_docs}" name="show_my_docs">
-            <button type="submit">Hide Documents</button>
-        </form>
-    </div>
+</div>
 </body>
 </html>
+

@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/headerAuth.css}">
 </head>
 <body>
 
 <div>
-    <header th:replace="~{/authorization/headerStartPage :: header}"></header>
+    <header th:replace="~{/authorization/headerAuth :: header}"></header>
     <h3>Enter your register data: </h3>
     <form action="/register" enctype="multipart/form-data" method="post" th:object="${registeringUser}">
         <label>Username:
@@ -38,8 +39,9 @@
                         th:text="${citizenship.getDislpayName()}">
                 </option>
             </select>
-        </label>
-        <div th:if="${errorsFound}" th:style="'color: red'"><strong>There are some errors</strong></div>
+        </label><br>
+        <div th:if="${errorsFound}" th:style="'color: red'"><strong>Please, check your fields</strong></div>
+        <div th:if="${userExistsError}" th:style="'color: red'"><strong>User already exists</strong></div>
         <button type="submit">Register</button>
     </form>
 </div>

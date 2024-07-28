@@ -1,3 +1,4 @@
+/* Styles for the movie saved notification bar */
 .notification-bar {
     position: fixed;
     top: 0;
@@ -8,4 +9,5 @@
     padding: 10px;
     text-align: center;
     z-index: 1000;
+    transition: top 0.3s ease; /* Smooth transition for showing and hiding */
 }

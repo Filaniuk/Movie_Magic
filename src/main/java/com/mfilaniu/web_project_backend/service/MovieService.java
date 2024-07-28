@@ -32,7 +32,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MovieService {
 
     private static final String API_READ_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYjViMTc2YTU0NzY3ZDc4Y2U4ZGQ5ZGMyNTkyMDk3ZSIsIm5iZiI6MTcyMjA3MTQyMi43NTM2OTUsInN1YiI6IjY2YTRiOGNkNWU2ZWZhNGNlZTUyM2EzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GJMjeuaMVnsC5OHkE_nNnjcTGwv0vRMGODtWbbjUNiM";
-    private final OkHttpClient OK_CLIENT = new OkHttpClient();
     private final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     private final UserRepository userRepository;
@@ -44,7 +43,7 @@ public class MovieService {
     private MovieResponse movieResponse;
     private int counter = 0;
 
-    public MovieDTO findMovie(Long movieId) throws MovieNotFoundException {
+    public MovieDTO findMovieById(Long movieId) throws MovieNotFoundException {
         return movieRepository.findById(movieId)
                 .map(mapperMovieToMovieDto::mapFrom)
                 .orElseThrow(MovieNotFoundException::new);

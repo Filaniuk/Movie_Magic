@@ -3,6 +3,7 @@ package com.mfilaniu.web_project_backend.controller;
 import com.mfilaniu.web_project_backend.dto.UserCreateDTO;
 import com.mfilaniu.web_project_backend.dto.UserReadDTO;
 import com.mfilaniu.web_project_backend.entity.user.Citizenship;
+import com.mfilaniu.web_project_backend.exceptions.UserAlreadyExistsException;
 import com.mfilaniu.web_project_backend.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +44,11 @@ public class RegisterController {
 
         try {
             userReadDto = userService.save(userCreateDTO);
+        } catch (UserAlreadyExistsException e) {
+            model.addAttribute("registeringUser", userCreateDTO);
+            model.addAttribute("citizenships", citizenships);
+            model.addAttribute("userExistsError", true);
+            return "authorization/register";
         } catch (Exception e) {
             model.addAttribute("registeringUser", userCreateDTO);
             model.addAttribute("citizenships", citizenships);

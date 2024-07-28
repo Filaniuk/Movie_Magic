@@ -21,7 +21,7 @@ public class MovieController {
     public String show(@PathVariable("id") Long movieId, Model model) {
 
         try {
-            model.addAttribute("found_movie", movieService.findMovie(movieId));
+            model.addAttribute("found_movie", movieService.findMovieById(movieId));
         } catch (MovieNotFoundException e) {
             System.out.println(e.getMessage());
         }
