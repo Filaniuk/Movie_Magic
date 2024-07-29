@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/movie.css}">
 </head>
 <body>
-<header th:replace="~{/authorization/headerAuth :: header}"></header>
+<header th:replace="~{authorization/headerAuth :: header}"></header>
 
 <div class="movie-details" th:object="${found_movie}">
     <div class="movie-image">

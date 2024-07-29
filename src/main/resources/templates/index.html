@@ -10,7 +10,7 @@
 </head>
 <body>
 <!--Session header-->
-<header th:replace="~{/authorization/headerAuth :: header}"></header>
+<header th:replace="~{authorization/headerAuth :: header}"></header>
 
 <!--Saved to profile notification-->
 <div th:if="${movieSaved_notf.name() == 'SAVED'}" class="notification-bar">

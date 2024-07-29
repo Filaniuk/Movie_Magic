@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/headerAuth.css}">
 </head>
 <body>
-<header class="header-container" th:replace="~{/authorization/headerAuth :: header}"></header>
+<header class="header-container" th:replace="~{authorization/headerAuth :: header}"></header>
 <div class="main-content">
     <div class="login-container">
         <h3>LOGIN</h3>

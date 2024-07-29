@@ -1,7 +1,12 @@
 spring:
   application:
     name: web_project_backend
-#data
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+  #data
   data:
   datasource:
     username: postgres

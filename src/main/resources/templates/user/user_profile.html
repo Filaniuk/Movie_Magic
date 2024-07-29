@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/user_profile.css}">
 </head>
 <body>
-<header th:replace="~{/authorization/headerAuth :: header}"></header>
+<header th:replace="~{authorization/headerAuth :: header}"></header>
 
 <div class="profile-container" th:object="${session.auth_user}">
     <!-- User Info Section -->
