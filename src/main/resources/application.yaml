@@ -6,22 +6,23 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
 
-  #data
-  data:
   datasource:
+    url: jdbc:postgresql://34.159.124.175:5432/test_db
     username: postgres
     password: postgres
-    url: jdbc:postgresql://localhost:5432/my_web_project_db
     driver-class-name: org.postgresql.Driver
 
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        format_sql: true
+
 server:
-  port: 8081
+  port: 1029
 
 
 
-jpa:
-  properties:
-    hibernate:
-      show_sql: true
-      format_sql: true
-      hbm2ddl.auto: update
+
+
