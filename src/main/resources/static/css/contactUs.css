@@ -1,0 +1,148 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1f1f1f;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* Contact Us Page Styles */
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #333;
+    color: #ddd;
+    border-radius: 8px;
+    border-top: 2px solid #4CAF50; /* Add a border line at the top */
+}
+
+.contact-info {
+    margin-bottom: 2rem;
+}
+
+.contact-info h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.contact-form-container {
+    background-color: #444;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Common input and button styling */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea,
+.submit-button {
+    width: 100%; /* Full width */
+    font-size: 1rem; /* Same font size */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #555;
+    color: #ddd;
+}
+
+.contact-form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.contact-form .error-messages {
+    margin-bottom: 1rem;
+}
+
+.contact-form .error {
+    color: #e74c3c;
+    font-size: 0.875rem;
+}
+
+/* Button styling */
+.submit-button {
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #4CAF50;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    display: block; /* Ensure full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: background-color 0.3s;
+    margin-top: 1rem; /* Space between the button and other elements */
+}
+
+.submit-button:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+.message-sent {
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* File input container styling */
+.file-input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem; /* Space between elements */
+}
+
+.file-input-container input[type="file"] {
+    /* Hide the default file input button */
+    display: none;
+}
+
+/* Style the label to act as a button */
+.file-input-container label {
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #4CAF50;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+    transition: background-color 0.3s;
+}
+
+/* Hover state for the label */
+.file-input-container label:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+/* File name display */
+.file-name {
+    margin-left: 0.75rem; /* Space between the button and the file name */
+    font-size: 1rem;
+    color: #ddd;
+}

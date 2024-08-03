@@ -1,4 +1,5 @@
-// Function to validate file size
+// bigFileContactUsAlert.js
+
 function validateFileSize(input) {
     const file = input.files[0];
     const maxSize = 5 * 1024 * 1024; // 5 MB in bytes
@@ -13,10 +14,11 @@ function validateFileSize(input) {
 
 // Attach event listeners when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    const fileInput = document.querySelector('input[name="attachedFile"]');
+    const fileInput = document.getElementById('attachedFile');
     if (fileInput) {
         fileInput.addEventListener('change', function() {
             validateFileSize(this);
+            displayFileName(); // Also update the file name display
         });
     }
 });

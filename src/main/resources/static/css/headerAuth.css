@@ -1,5 +1,4 @@
-/* headerAuth.css */
-/* Header Styles */
+/* Header Container */
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -11,16 +10,18 @@
     box-sizing: border-box;
 }
 
+/* Header Left and Right Sections */
 .header-left, .header-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
 }
 
 .header-left form, .header-right form {
-    display: inline-block;
+    margin: 0; /* Ensure no extra margin */
+    padding: 0; /* Ensure no extra padding */
 }
 
+/* Buttons */
 .header-container button {
     background-color: #4CAF50;
     color: #fff;
@@ -28,13 +29,18 @@
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
-    white-space: nowrap;
     transition: background-color 0.3s;
     font-size: 1rem;
+    margin: 0 0.5rem; /* Ensure spacing between buttons */
 }
 
 .header-container button:hover {
     background-color: #3e8e41;
+}
+
+/* Ensure Header Stays in One Line */
+.header-container {
+    flex-wrap: nowrap;
 }
 
 /* Responsive Design */
@@ -49,13 +55,8 @@
         width: 100%;
     }
 
-    .header-left form, .header-right form {
-        width: 100%;
-    }
-
     .header-container button {
         width: 100%;
         margin-bottom: 0.5rem;
     }
 }
-
