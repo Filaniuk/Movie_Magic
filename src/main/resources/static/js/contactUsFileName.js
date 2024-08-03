@@ -1,4 +1,4 @@
-// ContactUsFileName.js
+// contactUsFileName.js
 
 function displayFileName() {
     const fileInput = document.getElementById('attachedFile');
