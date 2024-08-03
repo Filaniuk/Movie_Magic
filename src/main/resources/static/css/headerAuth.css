@@ -32,6 +32,7 @@
     transition: background-color 0.3s;
     font-size: 1rem;
     margin: 0 0.5rem; /* Ensure spacing between buttons */
+    white-space: nowrap; /* Prevent buttons from wrapping */
 }
 
 .header-container button:hover {
