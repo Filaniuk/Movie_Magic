@@ -16,7 +16,7 @@ Please note that some of the pages are still in development (About Us, Contact U
 
 You can access the currently deployed application at:
 
-[http://34.91.70.175:1029/](http://34.91.70.175:1029/)
+[http://movie-get-magic.com](http://34.159.226.86:1029/)
 
 ## Credits
 
