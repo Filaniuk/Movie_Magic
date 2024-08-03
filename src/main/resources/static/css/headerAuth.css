@@ -17,7 +17,7 @@
 }
 
 .header-left form, .header-right form {
-    margin: 0; /* Ensure no extra margin */
+    margin: 0 10px; /* Add some margin between buttons */
     padding: 0; /* Ensure no extra padding */
 }
 
@@ -31,8 +31,6 @@
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 1rem;
-    margin: 0 0.5rem; /* Ensure spacing between buttons */
-    white-space: nowrap; /* Prevent buttons from wrapping */
 }
 
 .header-container button:hover {
@@ -41,7 +39,7 @@
 
 /* Ensure Header Stays in One Line */
 .header-container {
-    flex-wrap: nowrap;
+    flex-wrap: wrap; /* Allow header to wrap to new line */
 }
 
 /* Responsive Design */
