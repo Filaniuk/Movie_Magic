@@ -11,7 +11,7 @@ You can:
 - Access saved movies in the future
 - Contact me through the form under 'Contact Us'
 
-Please note that some of the pages are still in development (About Us).
+!!! Please note:
 Database is currently in migration that's why Login/Registration are unavailable at the moment.
 
 ## Deployed Website
