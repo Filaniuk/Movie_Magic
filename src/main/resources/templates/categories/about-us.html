@@ -4,16 +4,31 @@
     <meta charset="UTF-8">
     <title>About Us</title>
     <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/headerAuth.css}">
     <link rel="stylesheet" th:href="@{/css/aboutUs.css}">
 </head>
 <body>
-<div class="about-container">
-    <h2>In Development...</h2>
-    <div class="about-actions">
-        <form action="/" method="get">
-            <button type="submit">Go to Start Page</button>
-        </form>
-    </div>
+<div>
+    <header th:replace="~{authorization/headerAuth :: header}"></header>
+    <main class="about-container">
+        <section class="developer-section">
+            <h2>Developer</h2>
+            <div class="developer-profile">
+                <img src="/images/dev_photo.jpg" alt="My photo" class="developer-photo"/>
+                <div class="developer-info">
+                    <p>Mikalai Filaniuk</p>
+                    <a href="https://www.linkedin.com/in/mfilaniu" class="button">LinkedIn</a>
+                    <a href="https://github.com/Filaniuk" class="button">GitHub</a>
+                </div>
+            </div>
+        </section>
+        <section class="about-description">
+            <p>This website is a simple implementation of a Spring Boot application which uses a <a href="https://developer.themoviedb.org/reference/intro/getting-started">free external API</a> to connect to a database with a large number of movies. I have used Thymeleaf to implement the dynamic part of the website, allowing you to see different types of content while surfing the site.</p>
+            <p>This week, I am planning to connect a cloud database to enable movie saving, login, and registration functionalities. These features already work on my personal computer but are still in development for the virtual machine. I use Google Cloud as a server, which offers free usage for 90 days.</p>
+            <p>80% of the frontend part of the website was developed with the help of AI technologies such as Blackbox AI, ChatGPT, and Gemini. The backend follows a scalable MVC model.</p>
+            <p>If you have any suggestions or questions about this website, please use the form on the <a th:href="@{/contact-us}">Contact Us</a> page.</p>
+        </section>
+    </main>
 </div>
 </body>
 </html>
