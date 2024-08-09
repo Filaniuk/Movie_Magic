@@ -10,6 +10,7 @@ import com.mfilaniu.web_project_backend.mapper.Mapper;
 import com.mfilaniu.web_project_backend.repository.MovieRepository;
 import com.mfilaniu.web_project_backend.repository.UserMoviesRepository;
 import com.mfilaniu.web_project_backend.repository.UserRepository;
+import com.mfilaniu.web_project_backend.service.util.MovieResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import okhttp3.OkHttpClient;
