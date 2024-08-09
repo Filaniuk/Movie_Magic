@@ -22,7 +22,7 @@ public class UserCreateDTOToUser implements Mapper<UserCreateDTO, User> {
     }
 
     private String savePictureAndGetLink(UserCreateDTO userCreateDTO) {
-        if(userCreateDTO.getAvatar() == null) {return null;}
+        if(userCreateDTO.getAvatar() == null || userCreateDTO.getAvatar().isEmpty()) {return null;}
         return userCreateDTO.getAvatar().getOriginalFilename();
     }
 }

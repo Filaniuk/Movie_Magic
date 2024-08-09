@@ -39,11 +39,12 @@
                 <input type="date" id="birthdate" name="birthdate" th:field="*{birthdate}" required>
             </div>
             <div class="input-group">
-                <label for="avatar">Avatar (optional)</label>
+                <label for="avatar">Avatar (optional) up to 5 MB</label>
                 <div class="file-input-container">
                     <input type="file" id="avatar" name="avatar" class="file-input" th:field="*{avatar}">
                     <label for="avatar" class="custom-file-label">Choose File</label>
                 </div>
+                <span id="fileName">No file chosen</span> <!-- Display file name here -->
             </div>
             <div class="input-group">
                 <label for="citizenship">Citizenship</label>
@@ -60,6 +61,43 @@
         </form>
     </div>
 </div>
+
+<script>
+    function validateFileSize(input) {
+        const file = input.files[0];
+        const maxSize = 5 * 1024 * 1024; // 5 MB in bytes
+
+        if (file && file.size > maxSize) {
+            alert('The file size exceeds 5 MB.');
+            input.value = ''; // Clear the input
+            return false;
+        }
+        return true;
+    }
+
+    function displayFileName() {
+        const fileInput = document.getElementById('avatar');
+        const fileNameSpan = document.getElementById('fileName');
+        const file = fileInput.files[0];
+
+        if (file) {
+            fileNameSpan.textContent = file.name;
+        } else {
+            fileNameSpan.textContent = 'No file chosen';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInput = document.getElementById('avatar');
+        if (fileInput) {
+            fileInput.addEventListener('change', function() {
+                validateFileSize(this);
+                displayFileName(); // Also update the file name display
+            });
+        }
+    });
+</script>
 </body>
 </html>
+
 

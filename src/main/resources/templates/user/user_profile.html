@@ -13,8 +13,8 @@
 <div class="profile-container" th:object="${session.auth_user}">
     <!-- User Info Section -->
     <div class="user-info">
-        <div th:if="*{avatarPath != null}">
-            <img th:src="@{|/images/*{avatarPath}|}" alt="User Avatar" class="avatar"/>
+        <div th:if="*{avatarPath != null || avatarPath.trim().isEmpty()}">
+            <img th:src="@{|/images/*{avatarPath}|}" alt="No avatar" class="avatar"/>
         </div>
         <div class="user-details">
             <p>Email: <span th:text="*{email}"></span></p>
