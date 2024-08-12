@@ -18,7 +18,7 @@ Database is currently in migration that's why Login/Registration are unavailable
 
 You can access the currently deployed application at:
 
-- Domain: magic-movie.online
+- Domain: [magic-movie.online](http://magic-movie.online/) 
 - IP: [34.159.226.86:1029](http://34.159.226.86:1029/)
 
 ## Credits
