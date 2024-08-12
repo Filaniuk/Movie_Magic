@@ -19,9 +19,6 @@
         <div th:if="*{avatarPath == null || avatarPath.trim().isEmpty()}">
             <img th:src="@{|/images/default_avatar.png|}" alt="Default Avatar" class="avatar"/>
         </div>
-        <div>
-            <p><strong>The whole process of registration is still in development... That's why avatar is not shown at the moment.</strong></strong></p>
-        </div>
         <div class="user-details">
             <p>Email: <span th:text="*{email}"></span></p>
             <p>Full Name: <span th:text="*{fullname}"></span></p>
