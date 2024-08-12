@@ -12,19 +12,19 @@ spring:
       max-request-size: 5MB
 
   datasource:
-      url: jdbc:postgresql://localhost:5432/my_web_project_db
-      username: postgres
-      password: postgres
-      #    url: jdbc:postgresql://localhost:5432/movie_magic_db
-      #    username: mfilaniu
-      #    password: 123456Re
-      driver-class-name: org.postgresql.Driver
+    #      url: jdbc:postgresql://localhost:5432/my_web_project_db
+    #      username: postgres
+    #      password: postgres
+    url: jdbc:postgresql://localhost:5432/movie_magic_db
+    username: mfilaniu
+    password: 123456Re
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     properties:
-        hibernate:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-          default_schema: public
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: public
 
 
 server:
