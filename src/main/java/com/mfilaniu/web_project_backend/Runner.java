@@ -1,5 +1,6 @@
 package com.mfilaniu.web_project_backend;
 
+import com.mfilaniu.web_project_backend.service.ImageService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

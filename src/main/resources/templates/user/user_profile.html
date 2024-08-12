@@ -13,13 +13,10 @@
 <div class="profile-container" th:object="${session.auth_user}">
     <!-- User Info Section -->
     <div class="user-info">
-        <!-- Display the user's avatar if avatarPath is not null or empty -->
-<!--        TEMPORARY-->
-        <!--<div th:if="*{avatarPath != null && !avatarPath.trim().isEmpty()}">
-            <img th:src="@{|/images/*{avatarPath}|}" alt="User Avatar" class="avatar"/>
-        </div>-->
-        <!-- Display a default avatar if avatarPath is null or empty -->
-        <div>
+        <div th:if="*{avatarPath != null && !avatarPath.trim().isEmpty()}">
+            <img th:src="@{*{avatarPath}}" alt="Default Avatar" class="avatar"/>
+        </div>
+        <div th:if="*{avatarPath == null || avatarPath.trim().isEmpty()}">
             <img th:src="@{|/images/default_avatar.png|}" alt="Default Avatar" class="avatar"/>
         </div>
         <div>
