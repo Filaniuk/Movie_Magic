@@ -3,6 +3,7 @@ package com.mfilaniu.web_project_backend.controller;
 import com.mfilaniu.web_project_backend.dto.UserCreateDTO;
 import com.mfilaniu.web_project_backend.dto.UserReadDTO;
 import com.mfilaniu.web_project_backend.entity.user.Citizenship;
+import com.mfilaniu.web_project_backend.exceptions.RepeatedPasswordException;
 import com.mfilaniu.web_project_backend.exceptions.UserAlreadyExistsException;
 import com.mfilaniu.web_project_backend.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -49,7 +50,16 @@ public class RegisterController {
             model.addAttribute("citizenships", citizenships);
             model.addAttribute("userExistsError", true);
             return "authorization/register";
-        } catch (Exception e) {
+        }
+        catch (RepeatedPasswordException e) {
+            model.addAttribute("registeringUser", userCreateDTO);
+            model.addAttribute("citizenships", citizenships);
+            model.addAttribute("errorsFound", false);
+            model.addAttribute("userExistsError", false);
+            model.addAttribute("repeatedPasswordError", true);
+            return "authorization/register";
+        }
+        catch (Exception e) {
             model.addAttribute("registeringUser", userCreateDTO);
             model.addAttribute("citizenships", citizenships);
             model.addAttribute("errorsFound", true);

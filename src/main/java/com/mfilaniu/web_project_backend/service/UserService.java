@@ -5,10 +5,7 @@ import com.mfilaniu.web_project_backend.dto.UserLoginDTO;
 import com.mfilaniu.web_project_backend.dto.UserReadDTO;
 import com.mfilaniu.web_project_backend.dto.UserUpdateDTO;
 import com.mfilaniu.web_project_backend.entity.user.User;
-import com.mfilaniu.web_project_backend.exceptions.FalseLoginOrPasswordException;
-import com.mfilaniu.web_project_backend.exceptions.MovieNotFoundException;
-import com.mfilaniu.web_project_backend.exceptions.UserAlreadyExistsException;
-import com.mfilaniu.web_project_backend.exceptions.UserNotFoundException;
+import com.mfilaniu.web_project_backend.exceptions.*;
 import com.mfilaniu.web_project_backend.mapper.Mapper;
 import com.mfilaniu.web_project_backend.repository.UserMoviesRepository;
 import com.mfilaniu.web_project_backend.repository.UserRepository;
@@ -30,15 +27,15 @@ public class UserService {
     private final Mapper<UserUpdateDTO, User> userUpdateDTOMapper;
     private final UserMoviesRepository userMoviesRepository;
 
-    public UserReadDTO save(UserCreateDTO userCreateDTO) throws UserAlreadyExistsException, NullPointerException {
+    public UserReadDTO save(UserCreateDTO userCreateDTO) throws UserAlreadyExistsException, NullPointerException, RepeatedPasswordException {
 
         if (userCreateDTO == null) {
             throw new NullPointerException();
         } else if (userRepository.existsByUsername(userCreateDTO.getUsername())) {
             throw new UserAlreadyExistsException();
+        } else if (!userCreateDTO.getPassword().equals(userCreateDTO.getRepeatedPassword())) {
+            throw new RepeatedPasswordException();
         }
-
-        //TODO: Validation
 
         User savedUser = userRepository.save(
                 userCreateDTOMapper.mapFrom(userCreateDTO));

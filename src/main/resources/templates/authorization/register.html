@@ -55,6 +55,7 @@
                     </option>
                 </select>
             </div>
+            <div th:if="${repeatedPasswordError}" class="error-message">Your passwords are not the same</div>
             <div th:if="${errorsFound}" class="error-message">Please, check your fields</div>
             <div th:if="${userExistsError}" class="error-message">User already exists</div>
             <button type="submit">Register</button>
