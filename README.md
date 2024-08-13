@@ -11,9 +11,6 @@ You can:
 - Access saved movies in the future
 - Contact me through the form under 'Contact Us'
 
-!!! Please note:
-Database is currently in migration that's why Login/Registration are unavailable at the moment.
-
 ## Deployed Website
 
 You can access the currently deployed application at:
