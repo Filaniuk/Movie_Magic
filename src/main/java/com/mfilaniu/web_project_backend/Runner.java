@@ -15,7 +15,6 @@ public class Runner {
 
         var context = SpringApplication.run(Runner.class, args);
 
-
     }
 
 }
