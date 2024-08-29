@@ -1,6 +1,5 @@
 package com.mfilaniu.web_project_backend.service;
 
-import netscape.javascript.JSObject;
 import okhttp3.*;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
@@ -13,16 +12,18 @@ import java.io.IOException;
 @Service
 public class ImageService {
 
-    private static final String API_KEY_IMGBB = "bc54196ea232a07cd3060cad414d38fc";
-    private static final String UPLOAD_URL = "https://api.imgbb.com/1/upload";
+    private static final String API_KEY_IMGBB = "6d207e02198a847aa98d0a2a901485a5";
+    private static final String UPLOAD_URL = "https://freeimage.host/api/1/upload";
 
     public String uploadAndGetLink(MultipartFile file) throws IOException {
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("key", API_KEY_IMGBB)
-                .addFormDataPart("image", file.getOriginalFilename(),
+                .addFormDataPart("source", file.getOriginalFilename(),
                         RequestBody.create(file.getBytes(), MediaType.parse(file.getContentType())))
+                .addFormDataPart("action", "upload")
+                .addFormDataPart("format", "json")
                 .build();
 
         Request request = new Request.Builder()
@@ -45,7 +46,7 @@ public class ImageService {
     private String getLink(Response response) throws IOException {
         JSONObject obj = new JSONObject(response.body().string());
 
-        return obj.getJSONObject("data").getString("url");
+        return obj.getJSONObject("image").getString("url");
     }
 
 }

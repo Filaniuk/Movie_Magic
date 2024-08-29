@@ -32,7 +32,7 @@ import java.util.concurrent.ThreadLocalRandom;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class MovieService {
 
-    private static final String API_READ_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYjViMTc2YTU0NzY3ZDc4Y2U4ZGQ5ZGMyNTkyMDk3ZSIsIm5iZiI6MTcyMjA3MTQyMi43NTM2OTUsInN1YiI6IjY2YTRiOGNkNWU2ZWZhNGNlZTUyM2EzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GJMjeuaMVnsC5OHkE_nNnjcTGwv0vRMGODtWbbjUNiM";
+    private static final String API_READ_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMWQ0MWUyNTcxMGU0NDM0MWI2N2FiZjgwYTU1OWFlNSIsIm5iZiI6MTcyNDkyOTM4OS45NjYyMTEsInN1YiI6IjY2YTRiOGNkNWU2ZWZhNGNlZTUyM2EzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z40sxFTxTS-Xj2eDDL7JioNdesU45vQJ0TTdgiDIlj0";
     private final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     private final UserRepository userRepository;

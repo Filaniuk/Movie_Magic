@@ -13,11 +13,11 @@ spring:
 
   datasource:
 #    url: jdbc:postgresql://localhost:5432/my_web_project_db
-    #    username: postgres
-    #    password: postgres
+#    username: postgres
+#    password: postgres
     url: jdbc:postgresql://localhost:5432/movie_magic_db
-    username: mfilaniu
-    password: 123456Re
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
